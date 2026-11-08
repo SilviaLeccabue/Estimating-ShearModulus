@@ -1,25 +1,29 @@
-## Estimating-ShearModulus-elastography-images
-This repository contains the code and documentation for my project on estimating the shear modulus from elastography images. 
-I developed this project as part of my Master's degree, and I collected the dataset used for experimentation.
+# Shear modulus classification from SLDV wave fields
 
-# Introduction
+Classifies the stiffness of tissue-mimicking phantoms from scanning laser Doppler
+vibrometry (SLDV) wave data, using a CNN pre-trained on synthetic waves and
+fine-tuned on measurements. Published: J. Mech. Behav. Biomed. Mater. 170 (2025) 107079.
 
-In this project, I focused on estimating the shear modulus from elastography images, using the Scanning Laser Doppler Vibrometry (SLDV). 
-Elastography is a technique that measures tissue stiffness, which can have important medical applications. 
-This repository contains the implementation and documentation of the methods and algorithms I used to achieve this estimation.
+## What it does
+- Generates synthetic wave fields from an analytical model (Green's function)
+- Pre-trains a CNN on synthetic data, fine-tunes on measured data
+- Binary and five-class stiffness classification (84.4 % and 76.7 % accuracy on held-out data)
 
-# Dataset
+## Install
+pip install -r requirements.txt
 
-The dataset used in this project was collected during my Master's degree studies. 
-It includes a variety of SLDV images that are crucial for training and evaluating the model.
-Open datasets of SLDV images were not present in accessible databases, so the proposed CNN architecture was pre-trained using synthetic wave data generated using a computational model and then fine-tuned with physical data. 
-Due to privacy and copyright concerns, the dataset cannot be shared openly in this repository. 
-However, I provide instructions on how to obtain a similar dataset for research purposes.
+## Quick start (no private data needed)
+python examples/run_synthetic_demo.py
 
-# Results
+## Data
+Measured data cannot be shared (privacy and copyright). The synthetic generator
+reproduces the input format; see docs/data_format.md.
 
-The classification of the shear modulus of the materials was performed on two separate tasks: binary classification and a five-class classification. 
-During the two experiments using physical data, the binary classification achieved an accuracy of 84.4%, and the multi-class classification reported an accuracy of 76.6%. 
+## Tests
+pytest tests/
 
+## Limitations
+Classification, not regression; homogeneous phantoms; sector-level split.
 
-
+## Citation / Licence
+See CITATION.cff and LICENSE.
