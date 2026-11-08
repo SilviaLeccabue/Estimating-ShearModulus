@@ -25,5 +25,3 @@ pytest tests/
 ## Limitations
 Classification, not regression; homogeneous phantoms; sector-level split.
 
-## Citation / Licence
-See CITATION.cff and LICENSE.
